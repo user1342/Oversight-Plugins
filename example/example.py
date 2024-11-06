@@ -1,11 +1,13 @@
 # example_plugin/main.py
 from oversight.utils.plugin_base import PluginBase
 from flask import current_app, jsonify
+import os 
 
 class ExamplePlugin(PluginBase):
     def __init__(self, app, session_state):
         # Load the plugin configuration
         config = self._get_config()
+        template_folder = os.path.join(os.path.dirname(__file__), 'templates')
         
         # Initialize PluginBase
         super().__init__(
@@ -14,7 +16,7 @@ class ExamplePlugin(PluginBase):
             name=config['name'],
             import_name=__name__,
             url_prefix=f"/{config['name']}",
-            template_folder='templates'
+            template_folder=template_folder
         )
         self._analysis_complete = False
 
