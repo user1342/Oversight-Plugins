@@ -6,6 +6,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import numpy as np
 from collections import defaultdict
 import logging
+import os 
 
 class AdversarialPlugin(PluginBase):
     def __init__(self, app, session_state):
