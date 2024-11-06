@@ -15,13 +15,15 @@ class PromptFuzzingPlugin(PluginBase):
 
     def __init__(self, app, session_state):
         config = self._get_config()
+        template_folder = os.path.join(os.path.dirname(__file__), 'templates')
+        
         super().__init__(
             app,
             session_state,
             name=config['name'],
             import_name=__name__,
             url_prefix=f"/{config['name']}",
-            template_folder='templates'
+            template_folder=template_folder
         )
         self._fuzzing_results = None
 
